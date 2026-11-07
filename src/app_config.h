@@ -525,7 +525,7 @@ extern "C" {
 #define PB0_OUTPUT_ENABLE	1
 #define PB0_FUNC			AS_GPIO
 
-#define I2C_MAX_SPEED 		700000 // 700 kHz
+#define I2C_MAX_SPEED 		400000 // 400 kHz (B1.1: was 700 kHz; at 16 MHz 700k would round to 800k)
 #define I2C_SCL 			GPIO_PC2
 #define I2C_SDA 			GPIO_PC3
 #define I2C_GROUP 			I2C_GPIO_GROUP_C2C3
@@ -597,7 +597,7 @@ extern "C" {
 #define PB7_FUNC			AS_GPIO
 #define PULL_WAKEUP_SRC_PB7 PM_PIN_PULLUP_1M
 
-#define PULL_WAKEUP_SRC_PB6 PM_PIN_PULLUP_10K // LCD on low temp needs this, its an unknown pin going to the LCD controller chip
+#define PULL_WAKEUP_SRC_PB6 PM_PIN_UP_DOWN_FLOAT // B1.1: no pull-up (stock leaves PB6 floating); was PM_PIN_PULLUP_10K
 
 #elif DEVICE_TYPE == DEVICE_CGDK2
 
@@ -3661,7 +3661,7 @@ GPIO_PD7 - LED to +Vbat
  * Average consumption Original Xiaomi LYWSD03MMC (advertising 1700 ms, measure 6800 ms):
  * 18.64 uA (TX 0 dB)
  */
-#define CLOCK_SYS_CLOCK_HZ  	24000000 // 16000000, 24000000, 32000000, 48000000
+#define CLOCK_SYS_CLOCK_HZ  	16000000 // 16000000, 24000000, 32000000, 48000000
 enum{
 	CLOCK_SYS_CLOCK_1S = CLOCK_SYS_CLOCK_HZ,
 	CLOCK_SYS_CLOCK_1MS = (CLOCK_SYS_CLOCK_1S / 1000),
